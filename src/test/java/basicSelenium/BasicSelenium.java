@@ -73,7 +73,7 @@ public class BasicSelenium {
         driver.findElement(By.xpath("//ul[@id='projectContextMenu']//a[text()='Edit']")).click();
         // fill new name
 
-        String nameUpdated="Eynar";
+        String nameUpdated=String.valueOf(new Date().getTime())+"E";
         driver.findElement(By.id("ItemEditTextbox")).clear();
         driver.findElement(By.id("ItemEditTextbox")).sendKeys(nameUpdated);
         // click save
@@ -95,6 +95,7 @@ public class BasicSelenium {
         driver.findElement(By.id("ProjShareMenuDel")).click();
         // alert --> click OK button
         driver.switchTo().alert().accept();
+        Thread.sleep(2000);
         // verificacion
          actualResult=driver.findElement(By.id("CurrentProjectTitle")).getText();
          expectedResult=nameUpdated;
