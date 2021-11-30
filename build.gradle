@@ -1,6 +1,16 @@
-plugins {
-    id 'java'
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath "io.qameta.allure:allure-gradle:2.3"
+    }
 }
+
+apply plugin : 'java'
+apply plugin : 'io.qameta.allure'
+
 
 group 'webui_training'
 version '1.0-SNAPSHOT'
@@ -13,9 +23,18 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
     implementation 'org.seleniumhq.selenium:selenium-java:4.0.0'
-
+    testImplementation 'io.qameta.allure:allure-junit5:2.16.1'
 }
 
 test {
     useJUnitPlatform()
+}
+
+allure {
+    autoconfigure = true
+    version = '2.7.0'
+
+//    useJUnit5 {
+//        version = '2.7.0'
+//    }
 }

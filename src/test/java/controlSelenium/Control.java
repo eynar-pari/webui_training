@@ -2,6 +2,8 @@ package controlSelenium;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import singletonSession.Session;
 
 public class Control {
@@ -14,6 +16,14 @@ public class Control {
 
     protected void findControl() {
         this.control = Session.getInstance().getDriver().findElement(this.locator);
+
+    }
+
+    public void waitControlValueElement(String value){
+        this.control = Session.getInstance().getDriver().findElement(this.locator);
+        WebDriverWait explictWait= new WebDriverWait(Session.getInstance().getDriver(),15);
+        // condition
+        explictWait.until(ExpectedConditions.textToBe(this.locator,value));
     }
 
     public void click() {
