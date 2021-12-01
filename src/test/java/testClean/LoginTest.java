@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import pages.LoginModal;
 import pages.MainPage;
 import pages.MenuSection;
+import static helpers.ReadProperties.pwd;
+import static helpers.ReadProperties.user;
 
 public class LoginTest  extends TestBase{
     MainPage mainPage = new MainPage();
@@ -23,8 +25,8 @@ public class LoginTest  extends TestBase{
     @Issue("BUG001")
     public void verifyLoginHappyPath(){
         mainPage.loginImage.click();
-        loginModal.emailTextBox.setText("training@training2021.com");
-        loginModal.passwordTextBox.setText("12345");
+        loginModal.emailTextBox.setText(user);
+        loginModal.passwordTextBox.setText(pwd);
         loginModal.loginButton.click();
 
         Assertions.assertTrue(menuSection.logoutLink.isDisplayedControl(),
